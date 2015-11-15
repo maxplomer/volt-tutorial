@@ -72,7 +72,7 @@ Open sublime text editor(other editors: atom, textmate)
 
 Sign in to your github account from the "Github Desktop" menu, then click "Preferences"
 
-![](github_add_acount.png)
+![](github_add_account.png)
 
 
 Click the plus sign to add a new repo, then navigate to the folder that you create the git repository, then click "open" and then "Create & Add Repository".  At this point the Github desktop app can track and add changes to your repo, and can be publish to Github (button later becomes sync button) by pressing the "Publish" button in upper right, and then "Publish Repository"
