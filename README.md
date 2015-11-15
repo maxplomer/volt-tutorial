@@ -15,15 +15,17 @@ Covering:
 
 ## Dev Environment (your laptop):
 
+Note: $ at start indicates a system command on either dev machine or server
+
 Install rvm (Ruby version manager)
 
-    \curl -sSL https://get.rvm.io | bash -s stable
+    $ \curl -sSL https://get.rvm.io | bash -s stable
 
 Install ruby 2.2.2 using rvm
 
-    rvm install 2.2.2
-    rvm use 2.2.2 --default
-    ruby -v
+    $ rvm install 2.2.2
+    $ rvm use 2.2.2 --default
+    $ ruby -v
 
 
 
@@ -36,33 +38,33 @@ Create a new app:
 
 To run your app: 
 
-    cd volt-tutorial
-    bundle exec volt server
+    $ cd volt-tutorial
+    $ bundle exec volt server
 
 Create a new git repo:
 
-    git init
+    $ git init
 
 Add new files and any changes to known files (later done automatically by github desktop app, can use checkboxes to disable tracking on file, or add to .gitignore manually)
 
-    git add -A
+    $ git add -A
 
 Commit changes using command line (later done with commit button in github desktop app)
 
-    git commit -m "Initial code repository"
+    $ git commit -m "Initial code repository"
 
 Push changes using terminal to github after linked (can just press sync on desktop app)
 
-    git push
+    $ git push
 
 Push changes to heroku
 
-    git push heroku master
+    $ git push heroku master
 
 
 Open sublime text editor(other editors: atom, textmate) 
 
-    subl .
+    $ subl .
 
 [explain how to set subl to bash profile etc]
 
@@ -84,14 +86,19 @@ Click the plus sign to add a new repo, then navigate to the folder that you crea
 
 [how to generate pem file and new server]
 
+
+ssh to aws server
+
+    $ ssh -i mud-game-key-pair.pem ubuntu@ec2-54-209-61-233.compute-1.amazonaws.com
+
 Install new ruby on ubuntu, first install dependcies for rvm
 
-    sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
-    curl -L https://get.rvm.io | bash -s stable
-    source ~/.rvm/scripts/rvm
-    rvm install 2.2.2
-    rvm use 2.2.2 --default
-    ruby -v
+    $ sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
+    $ curl -L https://get.rvm.io | bash -s stable
+    $ source ~/.rvm/scripts/rvm
+    $ rvm install 2.2.2
+    $ rvm use 2.2.2 --default
+    $ ruby -v
 
 Install newest bundler 
 
