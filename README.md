@@ -111,6 +111,33 @@ Run mongodb server from any location
 
 **alternative: setup cloud mongo database on compose.io**
 
+[go through process to create and show tab to get URI from]
+
+set environment variable for database server URI (uniform resource identifier) in same terminal window that you will run the volt server
+
+    $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
+
+Once linked to heroku can set with 
+
+    $ heroku config:set COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
+
+I recommend adding the text
+
+    COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial" 
+
+to a .env file in the root of your project dir (strictly for bookkeeping purposes) and also add .env to your project's .gitignore file.  There is the dotenv ruby gem that will automatically load these environment variables, its not necessary to use this for just a few variables.  Its good practice to never ever commit these passwords to the git repo, once you do that its considered no good.  
+
+Add the following code to /config/app.rb, which will fall back to the local mongo db if the 
+
+      config.db_driver = 'mongo'
+      config.db_name = (config.app_name + '_' + Volt.env.to_s)
+
+      if ENV['COMPOSEIO_URI'].present?
+        config.db_uri = ENV['COMPOSEIO_URI'] # you will have to set this on heroku
+      else
+        config.db_host = 'localhost'
+        config.db_port = 27017
+      end
 
 
 ### AWS deployment
@@ -147,6 +174,10 @@ ssh back to server, run volt server with desired port no hangouts
 
     $ cd volt-tutorial-aws
     $ nohup bundle exec volt server -p 1234 &
+
+You can set the environment variable for the cloud database with following command, or install mongo to the server in next section
+
+    $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
 
 
 ### install mongo to aws server using ubuntu 14
