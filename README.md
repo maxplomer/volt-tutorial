@@ -75,7 +75,7 @@ Sign in to your github account from the "Github Desktop" menu, then click "Prefe
 ![](github_add_account.png)
 
 
-Click the plus sign to add a new repo, then navigate to the folder that you create the git repository, then click "open" and then "Create & Add Repository".  At this point the Github desktop app can track and add changes to your repo, and can be publish to Github (button later becomes sync button) by pressing the "Publish" button in upper right, and then "Publish Repository"
+Click the plus sign to add a new repo, then navigate to the folder that you created the git repository, then click "open" and then "Create & Add Repository".  At this point the Github desktop app can track and add changes to your repo locally, and the repo can be published to Github by pressing the "Publish" button in upper right (button later becomes sync button), and then "Publish Repository"
 
 ![](github_add_repo.png)
 
@@ -87,11 +87,11 @@ Click the plus sign to add a new repo, then navigate to the folder that you crea
 [how to generate pem file and new server]
 
 
-ssh to aws server
+ssh to AWS server
 
     $ ssh -i mud-game-key-pair.pem ubuntu@ec2-54-209-61-233.compute-1.amazonaws.com
 
-Install new ruby on ubuntu, first install dependcies for rvm
+Install new Ruby on Ubuntu, first install dependencies for rvm
 
     $ sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
     $ curl -L https://get.rvm.io | bash -s stable
@@ -104,11 +104,11 @@ Install newest bundler
 
     $ gem install bundler --pre
  
-Install dependency for nokogiri
+Install dependency for nokogiri (Ruby dependency that is known to require extra steps/cause errors)
 
     $ sudo apt-get install ruby-dev zlib1g-dev
 
-Copy app to local volt-tutorial-aws without .git, then copy to aws server with scp command
+Copy app to local volt-tutorial-aws folder without .git folder, then copy to aws server with scp command
 
     $ scp -i my-key-pair.pem -r volt-tutorial-aws ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com:/home/ubuntu
 
