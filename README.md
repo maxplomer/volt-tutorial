@@ -96,12 +96,18 @@ Click the plus sign to add a new repo, then navigate to the folder that you crea
 
 **setup local mongo database**
 
-download installation .tar from https://www.mongodb.org/downloads#production
+Install using homebrew
 
-extract the files
+    $ brew update
+    $ brew install mongodb
 
-    tar -zxvf mongodb-osx-x86_64-3.0.7.tgz
+Create mongo db data folder (preceding '/' indicates system root path, sudo will require admin password)
 
+    $ sudo mkdir -p /data/db
+
+Run mongodb server from any location
+
+    $ sudo mongo
 
 ### AWS deployment
 
@@ -138,6 +144,17 @@ ssh back to server, run volt server with desired port no hangouts
     $ cd volt-tutorial-aws
     $ nohup bundle exec volt server -p 1234 &
 
+
+### install mongo to aws server using ubuntu 14
+
+    $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+    $ echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+    $ sudo apt-get update
+    $ sudo apt-get install -y mongodb-org
+
+    It should automatically start, might require server restart, or just run 
+
+    $ sudo service mongod start
 
 
 ### installing open sans font
