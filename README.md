@@ -174,9 +174,14 @@ Copy app to local volt-tutorial-aws folder without .git folder, then copy to aws
 
     $ scp -i my-key-pair.pem -r volt-tutorial-aws ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com:/home/ubuntu
 
-ssh back to server, run volt server with desired port no hangouts
+NOTE: If redeploying, before running this scp command, ssh to server and delete the -aws folder
+
+    $ rm -rf volt-tutorial-aws
+
+ssh back to server, install gems, run volt server with desired port no hangouts
 
     $ cd volt-tutorial-aws
+    $ bundle install
     $ nohup bundle exec volt server -p 1234 &
 
 You can set the environment variable for the cloud database with following command, or install mongo to the server in next section
@@ -194,6 +199,8 @@ You can set the environment variable for the cloud database with following comma
 It should automatically start, might require server restart, or just run 
 
     $ sudo service mongod start
+
+
 
 
 ### installing open sans font
