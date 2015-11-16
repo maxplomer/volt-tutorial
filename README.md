@@ -111,7 +111,7 @@ Run mongodb server from any location
 
 **alternative: setup cloud mongo database on compose.io**
 
-[go through process to create and show tab to get URI from]
+[insert: go through process to create and show tab to get URI from]
 
 set environment variable for database server URI (uniform resource identifier) in same terminal window that you will run the volt server
 
@@ -142,12 +142,16 @@ Add the following code to /config/app.rb, which will fall back to the local mong
 
 ### AWS deployment
 
-[how to generate pem file and new server]
+[insert: how to generate pem file and new server]
+
+Set permissions on pem file
+
+    $ chmod 400 my-key-pair.pem
 
 
 ssh to AWS server
 
-    $ ssh -i mud-game-key-pair.pem ubuntu@ec2-54-209-61-233.compute-1.amazonaws.com
+    $ ssh -i my-key-pair.pem ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com
 
 Install new Ruby on Ubuntu, first install dependencies for rvm
 
