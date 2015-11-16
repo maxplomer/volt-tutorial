@@ -142,7 +142,7 @@ Add the following code to /config/app.rb, which will fall back to the local mong
 
 ### AWS deployment
 
-[insert: how to generate pem file and new server]
+[insert: how to generate pem file and new server, also set custom tcp rule to allow connections to port 1234]
 
 Set permissions on pem file
 
