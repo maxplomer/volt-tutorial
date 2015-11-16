@@ -66,7 +66,20 @@ Open sublime text editor(other editors: atom, textmate)
 
     $ subl .
 
-[explain how to set subl to bash profile etc]
+how to set subl to bash profile etc: 
+
+    $ vi ~/.bashrc
+
+paste in 
+
+    alias subl='~/Applications/Sublime\ Text\ 2/sublime_text'
+
+save and exit vi by typing
+
+    :wq
+
+and pressing enter
+
 
 ### How to link to github with desktop app
 
@@ -79,7 +92,15 @@ Click the plus sign to add a new repo, then navigate to the folder that you crea
 
 ![](github_add_repo.png)
 
+### Mongo databases
 
+**setup local mongo database**
+
+download installation .tar from https://www.mongodb.org/downloads#production
+
+extract the files
+
+    tar -zxvf mongodb-osx-x86_64-3.0.7.tgz
 
 
 ### AWS deployment
