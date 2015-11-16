@@ -1,6 +1,6 @@
 # volt-tutorial
 
-## About
+### About
 
 This is a tutorial for the Volt Ruby web-framework, http://www.voltframework.com 
 
@@ -13,7 +13,7 @@ Covering:
 
 
 
-## Dev Environment (your laptop):
+### Dev Environment (your laptop):
 
 Note: $ at start indicates a system command on either dev machine or server
 
@@ -82,7 +82,7 @@ Click the plus sign to add a new repo, then navigate to the folder that you crea
 
 
 
-# AWS deployment
+### AWS deployment
 
 [how to generate pem file and new server]
 
@@ -119,6 +119,6 @@ ssh back to server, run volt server with desired port no hangouts
 
 
 
-
+### installing open sans font
 
 
