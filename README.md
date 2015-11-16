@@ -206,3 +206,12 @@ It should automatically start, might require server restart, or just run
 ### installing open sans font
 
 
+### useful tips
+
+**search previous commands**
+
+Type CtrlR and then type part of the command you want. Bash will display the first matching command. Keep typing CtrlR and bash will cycle through previous matching commands.
+
+**search folder, myfolder,  recursively for text, "search text"**
+
+$ grep -r "search text" myfolder
