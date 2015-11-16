@@ -92,7 +92,7 @@ Click the plus sign to add a new repo, then navigate to the folder that you crea
 
 ![](github_add_repo.png)
 
-### Mongo databases
+### Mongo database
 
 **setup local mongo database**
 
@@ -108,6 +108,10 @@ Create mongo db data folder (preceding '/' indicates system root path, sudo will
 Run mongodb server from any location
 
     $ sudo mongo
+
+**alternative: setup cloud mongo database on compose.io**
+
+
 
 ### AWS deployment
 
@@ -152,7 +156,7 @@ ssh back to server, run volt server with desired port no hangouts
     $ sudo apt-get update
     $ sudo apt-get install -y mongodb-org
 
-    It should automatically start, might require server restart, or just run 
+It should automatically start, might require server restart, or just run 
 
     $ sudo service mongod start
 
