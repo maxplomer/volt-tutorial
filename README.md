@@ -52,6 +52,24 @@ Commit changes using command line (later done with commit button in github deskt
 
     $ git commit -m "Initial code repository"
 
+### How to link to github with desktop app
+
+Sign in to your github account from the "Github Desktop" menu, then click "Preferences"
+
+![](github_add_account.png)
+
+
+Click the plus sign to add a new repo, then navigate to the folder that you created the git repository, then click "open" and then "Create & Add Repository".  At this point the Github desktop app can track and add changes to your repo locally, and the repo can be published to Github by pressing the "Publish" button in upper right (button later becomes sync button), and then "Publish Repository"
+
+![](github_add_repo.png)
+
+### How to link to heroku through heroku dashboard
+
+After creating new app, add the git remote command located on the Deploy tab of your App instance
+(note: your app url will become http://{ app_name }.herokuapp.com )
+
+    $ heroku git:remote -a volt-tutorial
+
 ### Git push
 
 Push changes using terminal to github after linked (can just press sync on desktop app)
@@ -81,18 +99,6 @@ save and exit vi by typing
     :wq
 
 and pressing enter
-
-
-### How to link to github with desktop app
-
-Sign in to your github account from the "Github Desktop" menu, then click "Preferences"
-
-![](github_add_account.png)
-
-
-Click the plus sign to add a new repo, then navigate to the folder that you created the git repository, then click "open" and then "Create & Add Repository".  At this point the Github desktop app can track and add changes to your repo locally, and the repo can be published to Github by pressing the "Publish" button in upper right (button later becomes sync button), and then "Publish Repository"
-
-![](github_add_repo.png)
 
 ### Mongo database
 
