@@ -27,14 +27,13 @@ Install ruby 2.2.2 using rvm
     $ rvm use 2.2.2 --default
     $ ruby -v
 
+Install volt gem to system
 
-
+    $ gem install volt
 
 Create a new app:
 
     $ volt new volt-tutorial
-
-
 
 To run your app: 
 
@@ -53,6 +52,8 @@ Commit changes using command line (later done with commit button in github deskt
 
     $ git commit -m "Initial code repository"
 
+### Git push
+
 Push changes using terminal to github after linked (can just press sync on desktop app)
 
     $ git push
@@ -61,8 +62,9 @@ Push changes to heroku
 
     $ git push heroku master
 
+### Sublime text editor(other editors: atom, textmate) 
 
-Open sublime text editor(other editors: atom, textmate) 
+Open sublime text editor
 
     $ subl .
 
