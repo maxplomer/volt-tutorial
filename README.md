@@ -63,12 +63,35 @@ Click the plus sign to add a new repo, then navigate to the folder that you crea
 
 ![](github_add_repo.png)
 
-### How to link to heroku through heroku dashboard
+### How to link to Heroku
 
-After creating new app, add the git remote command located on the Deploy tab of your App instance
-(note: your app url will become http://{ app_name }.herokuapp.com )
+Specify ruby version in gemfile
+
+   ruby "2.2.2" # specify a Ruby version
+
+Add a Procfile that uses Thin
+
+    web: bundle exec thin start -p $PORT -e $RACK_ENV
+
+You will have to edit your config/app.rb file to look for the COMPOSEIO_URI environment variable.  This way when no environment variable is present you will default to the local mongo database. 
+
+    config.db_driver = 'mongo'
+    config.db_name = (config.app_name + '_' + Volt.env.to_s)
+
+    if ENV['COMPOSEIO_URI'].present?
+      config.db_uri = ENV['COMPOSEIO_URI'] # you will have to set this on heroku
+    else
+      config.db_host = 'localhost'
+      config.db_port = 27017
+    end
+
+After creating new app, enter the git remote command located on the Deploy tab of your App instance (note: your app url will become http://{ app_name }.herokuapp.com )
 
     $ heroku git:remote -a volt-tutorial
+
+View of heroku dashboard of app instance immeadiately after creating app
+
+![](heroku_dashboard.png)
 
 ### Git push
 
