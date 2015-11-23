@@ -40,9 +40,13 @@ To run your app:
     $ cd volt-tutorial
     $ bundle exec volt server
 
-You should see
+You should see the following in the terminal (before installing mongo)
 
+![](terminal_startup.png)
 
+And if you go to localhost:3000 in your browser you should see
+
+![](localhost.png)
 
 Create a new git repo:
 
@@ -97,11 +101,11 @@ View of heroku dashboard of app instance immeadiately after creating app
 
 ![](heroku_dashboard.png)
 
-Set heroku environment variable 
+Set heroku environment variable for database server URI (uniform resource identifier)
 
     $ heroku config:set COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
 
-Set local environment variable.  If you wanted to use the cloud database locally use export system command before starting the server (running "$ bundle exec volt server")
+Set local environment variable.  If you wanted to use the cloud database locally use export system command in same terminal window before runing the start volt server command
 
     $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial" 
 
@@ -137,7 +141,7 @@ save and exit vi by typing
 
 and pressing enter
 
-### Mongo database
+### Local Mongo database
 
 **setup local mongo database**
 
@@ -154,17 +158,8 @@ Run mongodb server from any location
 
     $ sudo mongo
 
-**alternative: setup cloud mongo database on compose.io**
 
-[insert: go through process to create and show tab to get URI from]
-
-set environment variable for database server URI (uniform resource identifier) in same terminal window that you will run the volt server
-
-    $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
-
-Once linked to heroku can set with 
-
-
+### Comment on Environment Variables
 
 I recommend adding the text
 
@@ -172,17 +167,6 @@ I recommend adding the text
 
 to a .env file in the root of your project dir (strictly for bookkeeping purposes) and also add .env to your project's .gitignore file.  There is the dotenv ruby gem that will automatically load these environment variables, its not necessary to use this for just a few variables.  Its good practice to never ever commit these passwords to the git repo, once you do that its considered no good.  
 
-Add the following code to /config/app.rb, which will fall back to the local mongo db if the 
-
-      config.db_driver = 'mongo'
-      config.db_name = (config.app_name + '_' + Volt.env.to_s)
-
-      if ENV['COMPOSEIO_URI'].present?
-        config.db_uri = ENV['COMPOSEIO_URI'] # you will have to set this on heroku
-      else
-        config.db_host = 'localhost'
-        config.db_port = 27017
-      end
 
 
 ### AWS deployment
