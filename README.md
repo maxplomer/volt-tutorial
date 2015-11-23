@@ -161,7 +161,7 @@ Run mongodb server from any location
 
 ### Comment on Environment Variables
 
-I recommend adding the text
+I recommend adding the text with the real username and password
 
     COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial" 
 
