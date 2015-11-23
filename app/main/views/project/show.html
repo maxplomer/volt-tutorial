@@ -7,7 +7,7 @@
     {{ Volt.current_user.projects.where(id: params.id).first.tasks.each do |task| }}
       {{ task._name }} 
       <button e-click="redirect_to '/tasks/' + task.id">view</button>
-      <button e-click="task.destroy">delete</button><br>
+      <button e-click="destroy_task(task)">delete</button><br>
 
     {{ end }}
 

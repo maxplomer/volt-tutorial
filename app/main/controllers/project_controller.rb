@@ -16,5 +16,9 @@ module Main
       end
     end
 
+    def destroy_task(task)
+      task.destroy if `confirm("Are you sure you want to delete that?")`
+    end
+
   end
 end

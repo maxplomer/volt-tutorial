@@ -18,6 +18,10 @@ module Main
       end
     end
 
+    def destroy_project(project)
+      project.destroy if `confirm("Are you sure you want to delete that?")`
+    end
+
     def about
       # Add code for when the about view is loaded
     end

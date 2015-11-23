@@ -8,7 +8,7 @@
     {{ Volt.current_user.projects.each do |project| }}
       {{ project._name }} 
       <button e-click="redirect_to '/projects/' + project.id">view</button>
-      <button e-click="project.destroy">delete</button><br>
+      <button e-click="destroy_project(project)">delete</button><br>
 
     {{ end }}
 
