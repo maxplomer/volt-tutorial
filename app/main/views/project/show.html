@@ -2,4 +2,17 @@
   Project Show
 
 <:Body>
-  <h1>Project: {{ Volt.current_user.projects.where(id: params.id).first._name}}</h1>
+  <h1>Project {{ Volt.current_user.projects.where(id: params.id).first._name}} Tasks</h1>
+
+    {{ Volt.current_user.projects.where(id: params.id).first.tasks.each do |task| }}
+      {{ task._name }} 
+      <button e-click="redirect_to '/tasks/' + task.id">view</button>
+      <button e-click="task.destroy">delete</button><br>
+
+    {{ end }}
+
+    <br>New Task<br>
+
+    <input type="text" value="{{ page._new_task_name }}" placeholder="New Task Name">
+    <br>
+    <button e-click="add_new_task">Add</button>
