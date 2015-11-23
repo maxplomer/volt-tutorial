@@ -71,6 +71,16 @@ Click the plus sign to add a new repo, then navigate to the folder that you crea
 
 ![](github_add_repo.png)
 
+### Setup cloud mongo database
+
+Login to compose.io, create database (within deployment if not already created)
+
+Create database user and password
+
+Get the database URI, which will later set to environment variable
+
+[insert walk through pictures, show where get the URI]
+
 ### How to link to Heroku
 
 Specify ruby version in gemfile
