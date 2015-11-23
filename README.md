@@ -4,15 +4,18 @@
 
 This is a tutorial for the Volt Ruby web-framework, http://www.voltframework.com 
 
-Covering:
- - general use, github, dev environment
+And is divided into:
+
+Initial setup and deployment
+ - dev environment, linking to github with desktop app
  - deployment on aws/heroku, discussion of safari glitch with heroku-volt deployment
- - adding Ratchet mobile css framework to volt
  - Using cloud mongo (compose.io) or local mongo database
 
+Building the app
+ - general use of Volt framework
+ - adding Ratchet mobile css framework to volt
 
-
-
+#Initial setup and deployment
 ### Dev Environment (for macbook, window and linux will differ) and Initial App Creation
 
 Note: $ at start indicates a system command on either dev machine or server
@@ -302,3 +305,35 @@ Type CtrlR and then type part of the command you want. Bash will display the fir
 **search folder, myfolder,  recursively for text, "search text"**
 
 $ grep -r "search text" myfolder
+
+### Reset password in Volt unfinished (might be finished in bleeding edge)
+
+I used the following to quickly get volt reset password to work, it is by no means the greatest solution, but it deals with Volt locking the ability to edit a User unless logged in, by just cloning the User and deleting the old.
+
+
+
+
+
+#Building the app
+
+###Initial todo app
+
+add to User model
+
+    has_many :projects
+
+create Project model
+
+    $ volt generate model Project
+
+add to Project model
+
+    has_many :tasks
+
+create Task model
+
+
+
+
+
+
