@@ -122,7 +122,7 @@ Set local environment variable.  If you wanted to use the cloud database locally
 
     $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial" 
 
-### discussion of safari glitch with heroku-volt deployment
+### Discussion of safari glitch with heroku-volt deployment
 
 Heroku will work fine for simple Volt apps, but there appears to be a safari glitch that was also a glitch with the herokuish library if you try to deploy with dokku.  If you need to continously keep loading a large amount of new promises/models Safari will eventually stop updating the browser.  The only work around I am aware of is to deploy on AWS.
 
@@ -240,7 +240,7 @@ Also can set the Sendgrid password with command (volt setup in later section)
 
     $ export SENDGRID_PASSWORD='12345678'
 
-### install mongo to aws server using ubuntu 14
+### Install mongo to aws server using ubuntu 14
 
     $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
     $ echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
@@ -252,7 +252,7 @@ It should automatically start, might require server restart, or just run
     $ sudo service mongod start
 
 
-### install mailer
+### Install mailer
 
 Add the following to config/app.rb, your SMTP username and password is the same username and password you provided when you signed up for SendGrid
 
@@ -295,7 +295,7 @@ Add button to your app/main/views/main/index.html file
     <button e-click="MailerTestTasks.send_test_email">send test email</button>
 
 
-### useful tips
+### Useful tips
 
 **search previous commands**
 
