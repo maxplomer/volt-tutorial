@@ -2,7 +2,7 @@
   Project Show
 
 <:Body>
-  <h1>Project {{ Volt.current_user.projects.where(id: params.id).first._name}}</h1>
+  <h1>Project <input type="text" value="{{ Volt.current_user.projects.where(id: params.id).first._name}}" placeholder="Project Name"></h1>
   <h4>Description</h4>
 
   <textarea value="{{ Volt.current_user.projects.where(id: params.id).first._description }}" placeholder="Project Description"></textarea>
@@ -18,7 +18,7 @@
 
   {{ Volt.current_user.projects.where(id: params.id).first.tasks.all.length.then {|i| i == 0 ? raw('You have no tasks in your project!<br>') : ''} }}
 
-  <br>New Task<br>
+  <h4>New Task<h4>
 
   <input type="text" value="{{ page._new_task_name }}" placeholder="New Task Name">
   <br>

@@ -2,7 +2,7 @@
   Task Show
 
 <:Body>
-  <h1>Task {{ store._tasks.where(id: params.id).first._name}}</h1>
+  <h1>Task <input type="text" value="{{ store._tasks.where(id: params.id).first._name}}"></h1>
 
   <h4>Description</h4>
 
