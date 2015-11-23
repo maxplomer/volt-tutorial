@@ -143,8 +143,6 @@ and pressing enter
 
 ### Local Mongo database
 
-**setup local mongo database**
-
 Install using homebrew
 
     $ brew update
@@ -221,7 +219,7 @@ You can set the environment variable for the cloud database with following comma
 
     $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
 
-    
+
 
 ### install mongo to aws server using ubuntu 14
 
