@@ -207,6 +207,10 @@ NOTE: If redeploying, before running this scp command, ssh to server and delete 
 
     $ rm -rf volt-tutorial-aws
 
+NOTE: Also when redeploying you will need to restart the server, which is an easy way to kill the previously running process
+
+![](aws_reboot_server.png)
+
 ssh back to server, install gems, run volt server with desired port no hangouts
 
     $ cd volt-tutorial-aws
@@ -217,6 +221,7 @@ You can set the environment variable for the cloud database with following comma
 
     $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
 
+    
 
 ### install mongo to aws server using ubuntu 14
 
