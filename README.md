@@ -306,13 +306,94 @@ Type CtrlR and then type part of the command you want. Bash will display the fir
 
 $ grep -r "search text" myfolder
 
-### Reset password in Volt unfinished (might be finished in bleeding edge)
+### Reset password in Volt unfinished
 
-I used the following to quickly get volt reset password to work, it is by no means the greatest solution, but it deals with Volt locking the ability to edit a User unless logged in, by just cloning the User and deleting the old.
+I used the following to quickly get volt reset password to work, it is by no means the greatest solution, but it deals with Volt locking the ability to edit a User unless logged in, by just cloning the User and deleting the old.  Apparently there is a Volt.skip_permissions which looks to also get around this.  This feature may be finished in the current version of the gem, not sure if those changes have propagated everywhere though.
+
+First download the gem manually https://github.com/voltrb/volt-user_templates and copy the app/user_templates folder to your project. Also remove volt-user_templates gem from your Gemfile, because we are now going to manually add it.
+
+replace app/user_templates/tasks/user_template_tasks.rb with
+
+    require 'digest'
+
+    class UserTemplateTasks < Volt::Task
+      def send_reset_email(email)
+        # Find user by e-mail
+        Volt.skip_permissions do
+          store._users.where(email: email).first.then do |user|
+            if user
+              reset_token = password_reset_token(user.id)
+
+              reset_base_url = 'password_reset'
+
+              reset_url = "http://#{Volt.config.domain}/#{reset_base_url}?user_id=#{user.id}&token=#{reset_token}"
+
+              Mailer.deliver('user_templates/mailers/forgot',
+                {to: email, name: user._name, reset_url: reset_url}
+              )
+            else
+              raise "There is no account with the e-mail of #{email}."
+            end
+          end
+        end
+      end
+
+      private
+      def password_reset_token(user_id)
+        Digest::SHA256.hexdigest("#{user_id}||#{Volt.config.app_secret}")
+      end
+    end
+
+replace app/user_templates/tasks/password_reset_tasks.rb with
+
+    class PasswordResetTasks < Volt::Task
+      def reset_password(user_id, token, new_password)
+        store._users.where(id: user_id).first.then do |user|
+          reset_token = password_reset_token(user.id)
+          if token == reset_token
+
+            name = user.name
+            email = user.email
+            user.destroy
+
+            new_user = User.new(name: name, email: email, password: new_password)
+
+            store._users << new_user
+
+            new_user.hash_password
+
+            store._widgets << {hello: "world"} ##testing
+
+          end
+        end
+      end
 
 
+      private
+      def password_reset_token(user_id)
+        Digest::SHA256.hexdigest("#{user_id}||#{Volt.config.app_secret}")
+      end
+    end
 
+replace app/user_templates/controllers/password_reset_controller.rb with
 
+    module UserTemplates
+      class PasswordResetController < Volt::ModelController
+        reactive_accessor :new_password
+
+        def reset_password
+          query_params = url.query.split('&')
+          user_id = query_params[0].split('=')[1]
+          token = query_params[1].split('=')[1]
+
+          PasswordResetTasks.reset_password(user_id, token, page._new_password)
+
+          flash._successes << "Your password has been reset"
+          redirect_to '/'
+        end
+
+      end
+    end    
 
 #Building the app
 
