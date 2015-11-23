@@ -7,16 +7,16 @@
 
   <textarea value="{{ Volt.current_user.projects.where(id: params.id).first._description }}" placeholder="Project Description"></textarea>
 
-  <h4>Tasks</h4>
+  <h4>Incomplete Tasks</h4>
 
-  {{ Volt.current_user.projects.where(id: params.id).first.tasks.each do |task| }}
+  {{ Volt.current_user.projects.where(id: params.id).first.tasks.select{|i| !i._completed}.each do |task| }}
     {{ task._name }} 
     <button e-click="redirect_to '/tasks/' + task.id">view</button>
     <button e-click="destroy_task(task)">delete</button><br>
 
   {{ end }}
 
-  {{ Volt.current_user.projects.where(id: params.id).first.tasks.all.length.then {|i| i == 0 ? raw('You have no tasks in your project!<br>') : ''} }}
+  {{ Volt.current_user.projects.where(id: params.id).first.tasks.all.select{|i| !i._completed}.length.then {|i| i == 0 ? raw('You have no incomplete tasks in your project!<br>') : ''} }}
 
   <h4>New Task</h4>
 
