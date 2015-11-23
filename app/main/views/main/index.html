@@ -12,11 +12,14 @@
 
     {{ end }}
 
+    {{ Volt.current_user.projects.all.length.then {|i| i == 0 ? raw('You have no current projects!<br>') : ''} }}
+
     <br>New Project<br>
 
     <input type="text" value="{{ page._new_project_name }}" placeholder="New Project Name">
     <br>
     <button e-click="add_new_project">Add</button>
+    <br><br>
   {{ else }}
     Log in to create a new project
   {{ end }}

@@ -11,8 +11,11 @@
 
     {{ end }}
 
+    {{ Volt.current_user.projects.where(id: params.id).first.tasks.all.length.then {|i| i == 0 ? raw('You have no tasks in your project!<br>') : ''} }}
+
     <br>New Task<br>
 
     <input type="text" value="{{ page._new_task_name }}" placeholder="New Task Name">
     <br>
     <button e-click="add_new_task">Add</button>
+    <br><br>
