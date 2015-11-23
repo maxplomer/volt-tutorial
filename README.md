@@ -360,9 +360,7 @@ Replace app/user_templates/tasks/password_reset_tasks.rb with
             store._users << new_user
 
             new_user.hash_password
-
-            store._widgets << {hello: "world"} ##testing
-
+            
           end
         end
       end
