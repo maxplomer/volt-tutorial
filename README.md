@@ -169,7 +169,7 @@ Create mongo db data folder (preceding '/' indicates system root path, sudo will
 
 Run mongodb server from any location
 
-    $ sudo mongo
+    $ sudo mongod
 
 
 ### Comment on Environment Variables
