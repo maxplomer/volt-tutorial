@@ -8,7 +8,7 @@ And is divided into:
 
 Initial setup and deployment
  - Dev environment, Linking to github with desktop app
- - Deployment on aws/heroku, Discussion of safari glitch with heroku-volt deployment
+ - Deployment on AWS/Heroku, Discussion of safari glitch with heroku-volt deployment
  - Using cloud mongo (compose.io) or local mongo database
 
 Building the app
@@ -212,7 +212,7 @@ Install dependency for nokogiri (Ruby dependency that is known to require extra 
 
     $ sudo apt-get install ruby-dev zlib1g-dev
 
-Copy app to local volt-tutorial-aws folder without .git folder, then copy to aws server with scp command
+Copy app to local volt-tutorial-aws folder without .git folder, then copy to AWS server with scp command
 
     $ scp -i my-key-pair.pem -r volt-tutorial-aws ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com:/home/ubuntu
 
@@ -240,7 +240,7 @@ Also can set the Sendgrid password with command (volt setup in later section)
 
     $ export SENDGRID_PASSWORD='12345678'
 
-### Install mongo to aws server using ubuntu 14
+### Install mongo to AWS server using ubuntu 14
 
     $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
     $ echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
