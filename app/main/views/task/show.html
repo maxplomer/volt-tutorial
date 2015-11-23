@@ -1,0 +1,10 @@
+<:Title>
+  Task Show
+
+<:Body>
+  <h1>Task {{ store._tasks.where(id: params.id).first._name}} of Project {{ store._tasks.where(id: params.id).first.project._name}}</h1>
+
+
+
+
+  <a href="/projects/{{ store._tasks.where(id: params.id).first.project.id }}">back to project</a>
