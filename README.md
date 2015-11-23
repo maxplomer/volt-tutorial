@@ -283,9 +283,6 @@ Add button to your app/main/views/main/index.html file
     <button e-click="MailerTestTasks.send_test_email">send test email</button>
 
 
-### installing open sans font
-
-
 ### useful tips
 
 **search previous commands**
