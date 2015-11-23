@@ -3,7 +3,17 @@
 
 <:Body>
   <h1>Task <input type="text" value="{{ store._tasks.where(id: params.id).first._name}}"></h1>
-
+  <h4>Status</h4>
+  {{ if store._tasks.where(id: params.id).first._completed }}
+    Complete
+    <br>
+    <button e-click="store._tasks.where(id: params.id).first._completed = false">mark as incomplete</button>
+  {{ else }}
+    Incomplete
+    <br>
+    <button e-click="store._tasks.where(id: params.id).first._completed = true">mark as complete</button>
+  {{ end }}
+  
   <h4>Description</h4>
 
   <textarea value="{{ store._tasks.where(id: params.id).first._description }}" placeholder="Task Description"></textarea>
