@@ -109,7 +109,9 @@ Set local environment variable.  If you wanted to use the cloud database locally
 
     $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial" 
 
+### discussion of safari glitch with heroku-volt deployment
 
+Heroku will work fine for simple Volt apps, but there appears to be a safari glitch that was also a glitch with the herokuish library if you try to deploy with dokku.  If you need to continously keep loading a large amount of new promises/models Safari will eventually stop updating the browser.  The only work around I am aware of is to deploy on AWS.
 
 ### Git push
 
