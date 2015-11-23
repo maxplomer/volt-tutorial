@@ -2,9 +2,12 @@
   Task Show
 
 <:Body>
-  <h1>Task {{ store._tasks.where(id: params.id).first._name}} of Project {{ store._tasks.where(id: params.id).first.project._name}}</h1>
+  <h1>Task {{ store._tasks.where(id: params.id).first._name}}</h1>
 
+  <h4>Description</h4>
 
+  <textarea value="{{ store._tasks.where(id: params.id).first._description }}" placeholder="Task Description"></textarea>
 
+  <h4>Project</h4>
 
-  <a href="/projects/{{ store._tasks.where(id: params.id).first.project.id }}">back to project</a>
+  <a href="/projects/{{ store._tasks.where(id: params.id).first.project.id }}">{{ store._tasks.where(id: params.id).first.project._name}}</a>
