@@ -40,6 +40,10 @@ To run your app:
     $ cd volt-tutorial
     $ bundle exec volt server
 
+You should see
+
+
+
 Create a new git repo:
 
     $ git init
@@ -92,6 +96,16 @@ After creating new app, enter the git remote command located on the Deploy tab o
 View of heroku dashboard of app instance immeadiately after creating app
 
 ![](heroku_dashboard.png)
+
+Set heroku environment variable 
+
+    $ heroku config:set COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
+
+Set local environment variable.  If you wanted to use the cloud database locally use export system command before starting the server (running "$ bundle exec volt server")
+
+    $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial" 
+
+
 
 ### Git push
 
@@ -150,7 +164,7 @@ set environment variable for database server URI (uniform resource identifier) i
 
 Once linked to heroku can set with 
 
-    $ heroku config:set COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
+
 
 I recommend adding the text
 
