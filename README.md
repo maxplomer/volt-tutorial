@@ -75,7 +75,7 @@ Click the plus sign to add a new repo, then navigate to the folder that you crea
 
 Specify ruby version in gemfile
 
-   ruby "2.2.2" # specify a Ruby version
+    ruby "2.2.2" # specify a Ruby version
 
 Add a Procfile that uses Thin
 
