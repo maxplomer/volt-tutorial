@@ -14,7 +14,7 @@
 
     {{ Volt.current_user.projects.all.length.then {|i| i == 0 ? raw('You have no current projects!<br>') : ''} }}
 
-    <h4>New Project<h4>
+    <h4>New Project</h4>
 
     <input type="text" value="{{ page._new_project_name }}" placeholder="New Project Name">
     <br>
