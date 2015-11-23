@@ -240,10 +240,45 @@ It should automatically start, might require server restart, or just run
 
 ### install mailer
 
+Add the following to config/app.rb, your SMTP username and password is the same username and password you provided when you signed up for SendGrid
 
+    config.mailer.via = :smtp
+    config.mailer.via_options = {
+      :address => 'smtp.sendgrid.net',
+      :port => '587',
+      :domain => 'myapp.com',
+      :user_name => 'maxplomer-gramercytech',
+      :password => ENV['SENDGRID_PASSWORD'],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
 
+Add the following to app/main/views/mailer/test.email
 
+    <:Subject>
+      Welcome
 
+    <:Html>
+      <h1>Welcome </h1>
+
+    <:Text>
+      Welcome
+
+You can now send an email by from the volt console with 
+
+    Mailer.deliver('mailer/test', {to: 'max.plomer@gramercytech.com'})
+
+You can create a task to send the test email and link to a button on homepage, in app/main/tasks/mailer_test_tasks.rb
+
+    class MailerTestTasks < Volt::Task
+      def send_test_email
+        Mailer.deliver('mailer/test', {to: 'max.plomer@gramercytech.com'})
+      end
+    end 
+
+Add button to your app/main/views/main/index.html file
+
+    <button e-click="MailerTestTasks.send_test_email">send test email</button>
 
 
 ### installing open sans font
