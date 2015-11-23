@@ -176,7 +176,7 @@ Set permissions on pem file
     $ chmod 400 my-key-pair.pem
 
 
-ssh to AWS server
+ssh to AWS server in same folder as the pem file
 
     $ ssh -i my-key-pair.pem ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com
 
@@ -209,11 +209,14 @@ NOTE: Also when redeploying you will need to restart the server, which is an eas
 
 ![](aws_reboot_server.png)
 
-ssh back to server, install gems, run volt server with desired port no hangouts
+ssh back to server and:
+ - go to folder
+ - install gems
+ - run volt server with desired port, no hangouts, and saving terminal output to file
 
     $ cd volt-tutorial-aws
     $ bundle install
-    $ nohup bundle exec volt server -p 1234 &
+    $ nohup bundle exec volt server -p 1234 > allout.txt 2>&1 &
 
 You can set the environment variable for the cloud database with following command, or install mongo to the server in next section
 
