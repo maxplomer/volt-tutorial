@@ -2,4 +2,4 @@
   Project Show
 
 <:Body>
-  <h1>Project: {{ store._projects.where(id: params.id).first._name}}</h1>
+  <h1>Project: {{ Volt.current_user.projects.where(id: params.id).first._name}}</h1>
