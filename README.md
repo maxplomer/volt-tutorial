@@ -222,7 +222,9 @@ You can set the environment variable for the cloud database with following comma
 
     $ export COMPOSEIO_URI="mongodb://db-user:db-password@candidate.52.mongolayer.com:10585/volt-tutorial"
 
+Also can set the Sendgrid password with command (volt setup in later section)
 
+    $ export SENDGRID_PASSWORD='12345678'
 
 ### install mongo to aws server using ubuntu 14
 
@@ -234,6 +236,12 @@ You can set the environment variable for the cloud database with following comma
 It should automatically start, might require server restart, or just run 
 
     $ sudo service mongod start
+
+
+### install mailer
+
+
+
 
 
 
