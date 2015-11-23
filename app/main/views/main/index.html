@@ -2,5 +2,22 @@
   Home
 
 <:Body>
-  <h1>Home</h1>
+  <h1>Projects</h1>
+
+  {{ if Volt.current_user }}
+    {{ Volt.current_user.projects.each do |project| }}
+      {{ project._name }} <button e-click="project.destroy">delete</button><br>
+
+    {{ end }}
+
+    <br>New Project<br>
+
+    <input type="text" value="{{ page._new_project_name }}" placeholder="New Project Name">
+    <br>
+    <button e-click="add_new_project">Add</button>
+  {{ else }}
+    Log in to create a new project
+  {{ end }}
+
+
 

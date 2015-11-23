@@ -3,6 +3,19 @@ module Main
   class MainController < Volt::ModelController
     def index
       # Add code for when the index view is loaded
+      page._new_project_name = ''
+    end
+
+    def add_new_project
+      unless page._new_project_name == ''
+        Volt.current_user.id.then do |result|
+          store._projects << {
+            user_id: result,
+            name: page._new_project_name
+          }
+          page._new_project_name = ''
+        end
+      end
     end
 
     def about
