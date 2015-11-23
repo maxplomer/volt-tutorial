@@ -1,4 +1,5 @@
 # See https://github.com/voltrb/volt#routes for more info on routes
+client '/projects/{{ id }}', controller: 'project', action: 'show'
 
 client '/about', action: 'about'
 
