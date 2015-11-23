@@ -224,10 +224,9 @@ NOTE: Also when redeploying you will need to restart the server, which is an eas
 
 ![](aws_reboot_server.png)
 
-ssh back to server and:
-- go to folder
-- install gems
-- run volt server with desired port, no hangouts, and saving terminal output to file
+ssh back to server, go to folder, install gems.
+
+Run volt server with desired port, no hangouts, and saving terminal output to file
 
     $ cd volt-tutorial-aws
     $ bundle install
