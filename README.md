@@ -13,7 +13,7 @@ Covering:
 
 
 
-### Dev Environment and Initial App Creation
+### Dev Environment (for macbook, window and linux will differ) and Initial App Creation
 
 Note: $ at start indicates a system command on either dev machine or server
 
