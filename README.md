@@ -7,13 +7,13 @@ This is a tutorial for the Volt Ruby web-framework, http://www.voltframework.com
 And is divided into:
 
 Initial setup and deployment
- - dev environment, linking to github with desktop app
- - deployment on aws/heroku, discussion of safari glitch with heroku-volt deployment
+ - Dev environment, Linking to github with desktop app
+ - Deployment on aws/heroku, Discussion of safari glitch with heroku-volt deployment
  - Using cloud mongo (compose.io) or local mongo database
 
 Building the app
- - general use of Volt framework
- - adding Ratchet mobile css framework to volt
+ - General use of Volt framework
+ - Adding Ratchet mobile css framework to volt
 
 #Initial setup and deployment
 ### Dev Environment (for macbook, window and linux will differ) and Initial App Creation
@@ -142,15 +142,15 @@ Open sublime text editor
 
     $ subl .
 
-how to set subl to bash profile etc: 
+How to set subl to bash profile etc: 
 
     $ vi ~/.bashrc
 
-paste in 
+Paste in 
 
     alias subl='~/Applications/Sublime\ Text\ 2/sublime_text'
 
-save and exit vi by typing
+Save and exit vi by typing
 
     :wq
 
@@ -191,9 +191,9 @@ Set permissions on pem file
     $ chmod 400 my-key-pair.pem
 
 
-ssh to AWS server in same folder as the pem file
+SSH to AWS server in same folder as the pem file
 
-    $ ssh -i my-key-pair.pem ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com
+    $ SSH -i my-key-pair.pem ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com
 
 Install new Ruby on Ubuntu, first install dependencies for rvm
 
@@ -216,7 +216,7 @@ Copy app to local volt-tutorial-aws folder without .git folder, then copy to aws
 
     $ scp -i my-key-pair.pem -r volt-tutorial-aws ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com:/home/ubuntu
 
-NOTE: If redeploying, before running this scp command, ssh to server and delete the -aws folder
+NOTE: If redeploying, before running this scp command, SSH to server and delete the -aws folder
 
     $ rm -rf volt-tutorial-aws
 
@@ -224,7 +224,7 @@ NOTE: Also when redeploying you will need to restart the server, which is an eas
 
 ![](aws_reboot_server.png)
 
-ssh back to server, go to folder, install gems.
+SSH back to server, go to folder, install gems.
 
 Run volt server with desired port, no hangouts, and saving terminal output to file
 
@@ -311,7 +311,7 @@ I used the following to quickly get volt reset password to work, it is by no mea
 
 First download the gem manually https://github.com/voltrb/volt-user_templates and copy the app/user_templates folder to your project. Also remove volt-user_templates gem from your Gemfile, because we are now going to manually add it.
 
-replace app/user_templates/tasks/user_template_tasks.rb with
+Replace app/user_templates/tasks/user_template_tasks.rb with
 
     require 'digest'
 
@@ -343,7 +343,7 @@ replace app/user_templates/tasks/user_template_tasks.rb with
       end
     end
 
-replace app/user_templates/tasks/password_reset_tasks.rb with
+Replace app/user_templates/tasks/password_reset_tasks.rb with
 
     class PasswordResetTasks < Volt::Task
       def reset_password(user_id, token, new_password)
@@ -374,7 +374,7 @@ replace app/user_templates/tasks/password_reset_tasks.rb with
       end
     end
 
-replace app/user_templates/controllers/password_reset_controller.rb with
+Replace app/user_templates/controllers/password_reset_controller.rb with
 
     module UserTemplates
       class PasswordResetController < Volt::ModelController
@@ -398,21 +398,24 @@ replace app/user_templates/controllers/password_reset_controller.rb with
 
 ###Initial todo app
 
-add to User model
+Add to User model
 
     has_many :projects
 
-create Project model
+Create Project model
 
     $ volt generate model Project
 
-add to Project model
+Add to Project model
 
     has_many :tasks
 
-create Task model
+Create Task model
+
+    $ volt generate model Task
 
 
+    
 
 
 
