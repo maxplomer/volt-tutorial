@@ -18,6 +18,18 @@
 
   {{ Volt.current_user.projects.where(id: params.id).first.tasks.all.select{|i| !i._completed}.length.then {|i| i == 0 ? raw('You have no incomplete tasks in your project!<br>') : ''} }}
 
+  <h4>Complete Tasks</h4>
+
+  {{ Volt.current_user.projects.where(id: params.id).first.tasks.select{|i| i._completed}.each do |task| }}
+    {{ task._name }} 
+    <button e-click="redirect_to '/tasks/' + task.id">view</button>
+    <button e-click="destroy_task(task)">delete</button><br>
+
+  {{ end }}
+
+  {{ Volt.current_user.projects.where(id: params.id).first.tasks.all.select{|i| i._completed}.length.then {|i| i == 0 ? raw('You have no complete tasks in your project!<br>') : ''} }}
+
+
   <h4>New Task</h4>
 
   <input type="text" value="{{ page._new_task_name }}" placeholder="New Task Name">
