@@ -13,7 +13,7 @@ Covering:
 
 
 
-### Dev Environment (your laptop):
+### Dev Environment and Initial App Creation
 
 Note: $ at start indicates a system command on either dev machine or server
 
@@ -31,11 +31,11 @@ Install volt gem to system
 
     $ gem install volt
 
-Create a new app:
+Create a new app
 
     $ volt new volt-tutorial
 
-To run your app: 
+To run your app
 
     $ cd volt-tutorial
     $ bundle exec volt server
@@ -48,7 +48,7 @@ And if you go to localhost:3000 in your browser you should see
 
 ![](localhost.png)
 
-Create a new git repo:
+Create a new git repo
 
     $ git init
 
