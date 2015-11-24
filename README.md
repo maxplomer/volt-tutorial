@@ -305,6 +305,11 @@ Type CtrlR and then type part of the command you want. Bash will display the fir
 
 $ grep -r "search text" myfolder
 
+
+**pingdom**
+
+Use a pinging service, like http://www.pingdom.com to keep your heroku server awake.
+
 ### Reset password in Volt unfinished
 
 I used the following to quickly get volt reset password to work, it is by no means the greatest solution, but it deals with Volt locking the ability to edit a User unless logged in, by just cloning the User and deleting the old.  Apparently there is a Volt.skip_permissions which looks to also get around this.  This feature may be finished in the current version of the gem, not sure if those changes have propagated everywhere though.
@@ -413,7 +418,9 @@ Create Task model
     $ volt generate model Task
 
 
-    
+
+
+**See newest commits for rest of the todo app, integrating with ratchet css coming soon.  Also check out heroku staging server.**
 
 
 
