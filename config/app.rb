@@ -44,6 +44,18 @@ Volt.configure do |config|
   # config.db_host = 'localhost'
   # config.db_port = 27017
 
+
+  config.db_driver = 'mongo'
+  config.db_name = (config.app_name + '_' + Volt.env.to_s)
+
+  if ENV['COMPOSEIO_URI'].present?
+    config.db_uri = ENV['COMPOSEIO_URI'] # you will have to set this on heroku
+  else
+    config.db_host = 'localhost'
+    config.db_port = 27017
+  end
+  
+
   #####################
   # Compression options
   #####################
