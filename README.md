@@ -184,7 +184,7 @@ to a .env file in the root of your project dir (strictly for bookkeeping purpose
 
 ### AWS deployment
 
-[insert: how to generate pem file and new server, also set custom tcp rule to allow connections to port 1234]
+[insert: how to generate pem file and new ubuntu 14.x server]
 
 Set permissions on pem file
 
@@ -193,11 +193,12 @@ Set permissions on pem file
 
 SSH to AWS server in same folder as the pem file
 
-    $ SSH -i my-key-pair.pem ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com
+    $ ssh -i my-key-pair.pem ubuntu@ec2-12-345-67-890.compute-1.amazonaws.com
 
 Install new Ruby on Ubuntu, first install dependencies for rvm
 
     $ sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
+    $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
     $ curl -L https://get.rvm.io | bash -s stable
     $ source ~/.rvm/scripts/rvm
     $ rvm install 2.2.2
@@ -211,6 +212,23 @@ Install newest bundler
 Install dependency for nokogiri (Ruby dependency that is known to require extra steps/cause errors)
 
     $ sudo apt-get install ruby-dev zlib1g-dev
+
+Install other dependecy, link to issue: http://stackoverflow.com/questions/21603772/usr-bin-ld-cannot-find-lgmp
+
+    $ sudo apt-get install libgmp3-dev 
+
+Route port 80 to port 3000
+
+    $ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000 
+
+NOTE: if you have an error like
+
+    sudo: unable to resolve host <linux user name>
+
+Alternatively route port 80 to port 3000 with
+
+    $ sudo su
+    # iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
 
 Copy app to local volt-tutorial-aws folder without .git folder, then copy to AWS server with scp command
 
@@ -226,11 +244,19 @@ NOTE: Also when redeploying you will need to restart the server, which is an eas
 
 SSH back to server, go to folder, install gems.
 
-Run volt server with desired port, no hangouts, and saving terminal output to file
+Run volt server with desired port, no hangouts, and saving terminal output to file (overwrites file each time)
 
     $ cd volt-tutorial-aws
     $ bundle install
     $ nohup bundle exec volt server -p 1234 > allout.txt 2>&1 &
+
+Save last pid
+
+    $ echo $! > save_pid.txt
+
+Later can stop process with
+
+    $ kill -9 `cat save_pid.txt`
 
 You can set the environment variable for the cloud database with following command, or install mongo to the server in next section
 
@@ -241,6 +267,8 @@ Also can set the Sendgrid password with command (volt setup in later section)
     $ export SENDGRID_PASSWORD='12345678'
 
 ### Install mongo to AWS server using ubuntu 14
+
+from: https://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
 
     $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
     $ echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
