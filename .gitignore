@@ -8,3 +8,6 @@ tmp
 .DS_Store
 compiled
 .env
+dokku.env
+
+dokkuserverminimalist.pem
